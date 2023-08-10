@@ -13,11 +13,18 @@
             <span class="font-semibold">Doel</span>
             <span><%= person_data.goal %>kg</span>
 
+            <span class="font-semibold">Huidig
+                    <span title="Exponentially Smoothed Moving Average"
+                        class="underline decoration-dotted cursor-help decoration-slate-400"
+                    ><a class="cursor-help" target="_blank" href="https://www.fourmilab.ch/hackdiet/e4/pencilpaper.html#Fa235">ESMA</a></span>
+            </span>
+            <span><%= (person_data.data_points |> List.last |> Map.get(:esma)) |> Float.round(1) %>kg</span>
+
             <span class="font-semibold">Kwijt</span>
-            <span><%= (person_data.data_points |> hd |> Map.get(:weight)) - (person_data.data_points |> List.last |> Map.get(:weight)) |> Float.round(1)%>kg</span>
+            <span><%= (person_data.data_points |> hd |> Map.get(:esma)) - (person_data.data_points |> List.last |> Map.get(:esma)) |> Float.round(1)%>kg</span>
 
             <span class="font-semibold">Te gaan</span>
-            <span><%= (person_data.data_points |> List.last |> Map.get(:weight)) - person_data.goal |> Float.round(1)%>kg</span>
+            <span><%= (person_data.data_points |> List.last |> Map.get(:esma)) - person_data.goal |> Float.round(1)%>kg</span>
         </div>
 
         <table class="w-full">
@@ -36,7 +43,7 @@
                     <tr>
                         <td><%= data_point.date |> NaiveDateTime.to_date %></td>
                         <td><%= data_point.weight %></td>
-                        <td>-</td>
+                        <td><%= data_point.esma |> Float.round(1)%>kg</td>
                     </tr>
                 <% end %>
             </tbody>
