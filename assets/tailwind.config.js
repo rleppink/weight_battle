@@ -11,6 +11,11 @@ module.exports = {
     "../lib/*_web.ex",
     "../lib/*_web/**/*.*ex"
   ],
+  safelist: [
+    {
+      pattern: /sky|pink/,
+    },
+  ],
   theme: {
     extend: {
       colors: {

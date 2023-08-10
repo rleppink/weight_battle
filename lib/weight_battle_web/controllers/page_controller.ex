@@ -4,6 +4,7 @@ defmodule WeightBattleWeb.PageController do
   @data %{
     "Laura" => %{
       goal: 55.0,
+      color: "sky-500",
       data_points: [
         %{
           date: NaiveDateTime.new!(~D[2023-08-07], ~T[08:00:00]),
@@ -25,6 +26,7 @@ defmodule WeightBattleWeb.PageController do
     },
     "Ronald" => %{
       goal: 100.0,
+      color: "pink-500",
       data_points: [
         %{
           date: NaiveDateTime.new!(~D[2023-08-07], ~T[08:00:00]),
