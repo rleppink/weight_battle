@@ -21,6 +21,10 @@ defmodule WeightBattleWeb.PageController do
         %{
           date: NaiveDateTime.new!(~D[2023-08-10], ~T[08:00:00]),
           weight: 58.7
+        },
+        %{
+          date: NaiveDateTime.new!(~D[2023-08-11], ~T[08:00:00]),
+          weight: 59.0
         }
       ]
     },
@@ -43,6 +47,10 @@ defmodule WeightBattleWeb.PageController do
         %{
           date: NaiveDateTime.new!(~D[2023-08-10], ~T[08:00:00]),
           weight: 108.1
+        },
+        %{
+          date: NaiveDateTime.new!(~D[2023-08-10], ~T[08:00:00]),
+          weight: 107.5
         }
       ]
     }
