@@ -4,7 +4,10 @@
 
     <%= for {person, person_data} <- @data do %>
     <div>
-        <div class={"text-xl font-semibold mb-4 underline decoration-#{person_data.color} decoration-2 underline-offset-4"}><%= person %></div>
+        <div
+            class={"text-xl font-semibold mb-4 underline decoration-#{person_data.color} decoration-2 underline-offset-4"}>
+            <%= person %>&nbsp;&nbsp;
+        </div>
 
         <div class={"rounded border border drop-shadow-lg p-2 bg-white grid grid-cols-2 gap-1 mb-4 py-4"}>
             <span class="font-semibold">Start</span>
