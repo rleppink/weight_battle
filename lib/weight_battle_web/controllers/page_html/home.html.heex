@@ -13,8 +13,8 @@
             <span class="font-semibold">Start</span>
             <span><%= person_data.data_points |> hd |> Map.get(:weight) %>kg</span>
 
-            <span class="font-semibold">Doel</span>
-            <span><%= person_data.goal %>kg</span>
+            <div class="font-semibold mb-2">Doel</div>
+            <div><%= person_data.goal %>kg</div>
 
             <span class="font-semibold">Huidig
                     <span title="Exponentially Smoothed Moving Average"
