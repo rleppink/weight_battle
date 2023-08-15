@@ -45,6 +45,6 @@ defmodule WeightBattleWeb.IndexLive do
   }
 
   def mount(_params, _session, socket) do
-    {:ok, socket |> push_event("weight_data", @data)}
+    {:ok, socket |> assign(:data, @data) |> push_event("weight_data", @data)}
   end
 end

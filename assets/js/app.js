@@ -28,15 +28,16 @@ let Hooks = {}
 Hooks.ChartData = {
     mounted() {
         this.handleEvent("weight_data", data => {
-            console.log(data.Ronald.data_points.labels);
+            let personData = data[this.el.dataset.person];
+
             let context = this.el.getContext('2d');
             let myChart = new Chart(context, {
                 type: 'line',
                 data: {
-                    labels: data.Ronald.data_points.labels,
+                    labels: personData.data_points.labels,
                     datasets: [{
-                        label: 'weight',
-                        data: data.Ronald.data_points.values,
+                        label: 'Gewicht',
+                        data: personData.data_points.values,
                         backgroundColor: [
                             'rgba(255, 99, 132, 0.2)',
                         ],

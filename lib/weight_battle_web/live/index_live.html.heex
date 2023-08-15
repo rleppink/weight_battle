@@ -1,1 +1,3 @@
-<canvas id="a_chart" phx-hook="ChartData" />
+<%= for {person, person_data} <- @data do %>
+    <canvas id={"chart_#{person}"} phx-hook="ChartData" data-person={person} />
+<% end %>
