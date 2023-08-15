@@ -24,36 +24,35 @@ import topbar from "../vendor/topbar"
 
 import Chart from 'chart.js/auto';
 
-let ctx = document.getElementById('charty-mcchartface').getContext('2d');
-let myChart = new Chart(ctx, {
-    type: 'line',
-    data: {
-        labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-        datasets: [{
-            label: '# of Votes',
-            data: [12, 19, 3, 5, 2, 3],
-            backgroundColor: [
-                'rgba(255, 99, 132, 0.2)',
-            ],
-            borderColor: [
-                'rgba(255, 99, 132, 1)',
-            ],
-            borderWidth: 1
-        }]
-    },
-    options: {
-        scales: {
-            yAxes: [{
-                ticks: {
-                    beginAtZero: true
+let Hooks = {}
+Hooks.ChartData = {
+    mounted() {
+        this.handleEvent("weight_data", data => {
+            console.log(data.Ronald.data_points.labels);
+            let context = this.el.getContext('2d');
+            let myChart = new Chart(context, {
+                type: 'line',
+                data: {
+                    labels: data.Ronald.data_points.labels,
+                    datasets: [{
+                        label: 'weight',
+                        data: data.Ronald.data_points.values,
+                        backgroundColor: [
+                            'rgba(255, 99, 132, 0.2)',
+                        ],
+                        borderColor: [
+                            'rgba(255, 99, 132, 1)',
+                        ],
+                        borderWidth: 1
+                    }]
                 }
-            }]
-        }
+            });
+        });
     }
-});
+}
 
 let csrfToken = document.querySelector("meta[name='csrf-token']").getAttribute("content")
-let liveSocket = new LiveSocket("/live", Socket, {params: {_csrf_token: csrfToken}})
+let liveSocket = new LiveSocket("/live", Socket, {params: {_csrf_token: csrfToken}, hooks: Hooks})
 
 // Show progress bar on live navigation and form submits
 topbar.config({barColors: {0: "#29d"}, shadowColor: "rgba(0, 0, 0, .3)"})
